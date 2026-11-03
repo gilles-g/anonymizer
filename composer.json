@@ -1,0 +1,62 @@
+{
+    "name": "gilles-g/db-anonymizer",
+    "description": "Anonymizes application database columns through table-scoped SQL UPDATEs, before or after a dump.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "gilles-g",
+            "email": "ggauthier@spiriit.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^3.8|^4.0",
+        "fakerphp/faker": "^1.23",
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "gilles-g/dump-loader": "dev-main",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5",
+        "rector/rector": "^2.1",
+        "symfony/dependency-injection": "^6.4|^7.4|^8.0"
+    },
+    "suggest": {
+        "doctrine/dbal": "To run the anonymization against a database.",
+        "fakerphp/faker": "To generate realistic values through the pool.",
+        "gilles-g/dump-loader": "To offer the anonymization as a step of a dump load.",
+        "symfony/dependency-injection": "To have MaskFactory implementations autoconfigured in a Symfony app."
+    },
+    "autoload": {
+        "psr-4": {
+            "DbAnonymizer\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DbAnonymizer\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../dump-loader"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "check": [
+            "@cs-check"
+        ],
+        "cs-check": "vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "vendor/bin/php-cs-fixer fix",
+        "test": "vendor/bin/phpunit"
+    }
+}

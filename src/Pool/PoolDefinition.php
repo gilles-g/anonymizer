@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the gilles-g/db-anonymizer package.
+ *
+ * (c) gilles-g <ggauthier@spiriit.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace DbAnonymizer\Pool;
+
+final readonly class PoolDefinition
+{
+    /**
+     * @param non-empty-list<PoolColumn> $columns
+     */
+    private function __construct(
+        public PoolAlias $alias,
+        public Seed $seed,
+        public int $size,
+        public array $columns,
+    ) {
+    }
+
+    /**
+     * @param non-empty-list<PoolColumn> $columns
+     */
+    public static function of(PoolAlias $alias, Seed $seed, int $size, array $columns): self
+    {
+        if ($size < 1) {
+            throw new \InvalidArgumentException(\sprintf('A pool size must be at least 1, %d given.', $size));
+        }
+
+        return new self($alias, $seed, $size, $columns);
+    }
+}
