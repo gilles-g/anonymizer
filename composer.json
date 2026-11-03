@@ -15,7 +15,7 @@
         "doctrine/dbal": "^3.8|^4.0",
         "fakerphp/faker": "^1.23",
         "friendsofphp/php-cs-fixer": "^3.64",
-        "gilles-g/dump-loader": "dev-main",
+        "gilles-g/dump-loader-bundle": "^0.1.0",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^11.5",
         "rector/rector": "^2.1",
@@ -24,7 +24,7 @@
     "suggest": {
         "doctrine/dbal": "To run the anonymization against a database.",
         "fakerphp/faker": "To generate realistic values through the pool.",
-        "gilles-g/dump-loader": "To offer the anonymization as a step of a dump load.",
+        "gilles-g/dump-loader-bundle": "To offer the anonymization as a step of a dump load.",
         "symfony/dependency-injection": "To have MaskFactory implementations autoconfigured in a Symfony app."
     },
     "autoload": {
@@ -40,12 +40,6 @@
             "DbAnonymizer\\Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../dump-loader"
-        }
-    ],
     "config": {
         "sort-packages": true
     },
